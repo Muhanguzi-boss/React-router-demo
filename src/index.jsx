@@ -1,19 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Dashboard from "../Host/Dashboard";
+import Home from "./pages/Home";
+import About from "./pages/About";
+
+import "./server";
 
 function App() {
-  return <h1>Hello, React Router!</h1>;
-}
-function About() {
-  return <p>Welecome to the about Page Boss_man!!!</p>;
+  return (
+    <BrowserRouter>
+      <header>
+        <Link to="/">#VANLIFE</Link>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+        </nav>
+      </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/about" element={<About />} />
-    </Routes>
-  </BrowserRouter>
-);
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
